@@ -1,0 +1,299 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #1f2937;
+    color: white;
+    text-align: center;
+}
+
+.hangman-box {
+    margin: 50px auto;
+    width: 350px;
+    height: 400px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 0 40px #60a5fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.the-hangman {
+    position: relative;
+    width: 320px;
+    height: 420px;
+}
+
+.base {
+    position: absolute;
+    bottom: 10px;
+    left: 40px;
+    width: 240px;
+    height: 14px;
+    background: #60a5fa;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #60a5fa;
+    display: none;
+}
+
+.pole {
+    position: absolute;
+    bottom: 10px;
+    left: 90px;
+    width: 14px;
+    height: 395px;
+    background: #60a5fa;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #60a5fa;
+    display: none;
+}
+
+.top {
+    position: absolute;
+    top: 25px;
+    left: 90px;
+    width: 170px;
+    height: 14px;
+    background: #60a5fa;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #60a5fa;
+    display: none;
+}
+
+.rope {
+    position: absolute;
+    top: 40px;
+    left: 245px;
+    width: 6px;
+    height: 70px;
+    background: white;
+    animation: ropeShake 0.6s infinite alternate;
+    display: none;
+}
+
+.man {
+    position: absolute;
+    top: 110px;
+    left: 215px;
+    animation: swing 2s infinite ease-in-out;
+    transform-origin: top center;
+}
+
+.part {
+    opacity: 0;
+    animation: appear 1s forwards;
+}
+
+.head {
+    width: 60px;
+    height: 60px;
+    border: 5px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 20px red;
+    animation-delay: 0.5s;
+    animation: appear 1s forwards, breathe 2s infinite ease-in-out;
+    display: none;
+}
+
+.body {
+    width: 7px;
+    height: 95px;
+    background: white;
+    margin: auto;
+    animation-delay: 1.2s;
+    display: none;
+}
+
+.arm {
+    position: absolute;
+    top: 90px;
+    width: 65px;
+    height: 7px;
+    background: white;
+    display: none;
+}
+
+.arm.left {
+    left: -30px;
+    transform: rotate(-35deg);
+    animation-delay: 1.8s;
+}
+
+.arm.right {
+    left: 25px;
+    transform: rotate(35deg);
+    animation-delay: 2.2s;
+}
+
+.leg {
+    position: absolute;
+    top: 175px;
+    width: 70px;
+    height: 7px;
+    background: white;
+    display: none;
+}
+
+.leg.left {
+    left: 20px;
+    transform: rotate(45deg);
+    animation-delay: 2.8s;
+}
+
+.leg.right {
+    left: -30px;
+    transform: rotate(-45deg);
+    animation-delay: 3.2s;
+}
+
+@keyframes swing {
+    0% {
+        transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(-10deg);
+    }
+}
+
+@keyframes ropeShake {
+    from {
+        transform: rotate(-3deg);
+    }
+    to {
+        transform: rotate(3deg);
+    }
+}
+
+@keyframes appear {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes breathe {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+.letter-box {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #a78bfa;
+    border-radius: 1px;
+    margin: 5px;
+    background-color: #60a5fa;
+    color: #1f2937;
+    line-height: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #a78bfa;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.letters-guess span {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #a78bfa;
+    border-bottom: 3px solid #60a5fa;
+    border-radius: 1px;
+    margin: 5px;
+    color: #1f2937;
+    line-height: 50px;
+    box-shadow: 0 0 10px #a78bfa;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.clicked {
+    background-color: #a78bfa;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.correct {
+    background-color: #60a5fa;
+    animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.finished {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.the-hangman.false-1 .base {
+    display: block;
+}
+
+.the-hangman.false-2 .pole {
+    display: block;
+}
+
+.the-hangman.false-3 .top {
+    display: block;
+}
+
+.the-hangman.false-4 .rope {
+    display: block;
+}
+
+.the-hangman.false-5 .head {
+    display: block;
+}
+
+.the-hangman.false-6 .body {
+    display: block;
+}
+
+.the-hangman.false-7 .arm {
+    display: block;
+}
+
+.the-hangman.false-8 .leg {
+    display: block;
+}
+
+.game-over,
+.win {
+    position: fixed;
+    padding: 100px 20px;
+    background-color: #1f2937;
+    top: 25%;
+    left: 10%;
+    width: 80%;
+    font-weight: bold;
+    font-size: 46px;
+    border-radius: 5px;
+    border: solid 1px #a78bfa;
+}
+
+.game-over {
+    color: rgb(219, 18, 4);
+    text-shadow: 0 0 20px #60a5fa;
+}
+
+.win {
+    color: rgb(4, 219, 29);
+    text-shadow: 0 0 20px #60a5fa;
+}

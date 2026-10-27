@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hang Man</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container my-5 mx-auto w-350">
+        <div class="game-info flex">
+            <div
+                class="game-name flex-1 text-left m-5 font-semibold text-3xl [text-shadow:0_0_25px_cyan] text-violet-400">
+                Hang Man</div>
+            <div
+                class="category flex-1 text-right m-5 font-semibold text-3xl [text-shadow:0_0_25px_cyan] text-violet-400">
+                Word From: <span class="text-blue-400"></span>
+            </div>
+        </div>
+        <hr class=" border-cyan-100">
+        <div class="row flex  justify-between items-center gap-x-10">
+            <div class="hangman-box flex-1">
+                <div class="the-hangman">
+                    <div class="base"></div>
+                    <div class="pole"></div>
+                    <div class="top"></div>
+                    <div class="rope"></div>
+                    <div class="man">
+                        <div class="head part"></div>
+                        <div class="body part"></div>
+                        <div class="arm left part"></div>
+                        <div class="arm right part"></div>
+                        <div class="leg left part"></div>
+                        <div class="leg right part"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="letters flex-1 p-5 text-center"></div>
+        </div>
+        <hr class="border-cyan-100">
+        <div class="letters-guess flex justify-center p-5 my-5 mx-auto"></div>
+    </div>
+    <script src="hang.js"></script>
+
+</body>
+
+</html>
